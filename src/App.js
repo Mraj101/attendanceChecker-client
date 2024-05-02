@@ -8,7 +8,7 @@ import {
 import "./App.css";
 import { Dashboad } from "./page/Dashboad";
 import { Layout } from "./layout/Layout";
-import ShowData from "./components/ShowData";
+import ShowData from "./components/Dashboard/ShowData";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/view",
         element: <ShowData />,
+      },
+      {
+        path: "/settings",
+        element: null,
       },
     ],
   },

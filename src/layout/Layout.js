@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import SideBar from "../components/Sidebar";
+import SideBar from "../components/Dashboard/Sidebar";
 
 export const Layout = () => {
   const [toggle, setToggle] = useState(true);
@@ -10,8 +10,8 @@ export const Layout = () => {
       {/* <!-- sidebar --> */}
       <SideBar toggle={toggle} />
       {/* <!-- Main content --> */}
-      <div class="flex flex-col flex-1 overflow-y-auto">
-        <div class="flex items-center justify-between h-16 bg-white border-b border-gray-200">
+      <div class="flex flex-col flex-1 overflow-y-auto ">
+        <div class="flex items-center justify-between h-16 bg-white">
           <div class="flex items-center px-4">
             <button
               onClick={() => {
