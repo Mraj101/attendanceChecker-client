@@ -1,6 +1,4 @@
-
 import ShowData from "../components/Dashboard/ShowData";
-
 
 export const Dashboad = () => {
   return (
@@ -13,9 +11,7 @@ export const Dashboad = () => {
           Welcome to attendance checker.
         </p>
       </div>
- 
-        <ShowData  />
+      <ShowData />
     </div>
-   
   );
 };

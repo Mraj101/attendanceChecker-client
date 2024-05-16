@@ -20,7 +20,7 @@ const WeeklyData = ({ weeklysummaryData, loading, date }) => {
 
   return (
     <>
-      {loading ? ( // Show loader if loading state is true
+      {loading ? (
         <div role="status">
           <svg
             aria-hidden="true"
@@ -43,7 +43,7 @@ const WeeklyData = ({ weeklysummaryData, loading, date }) => {
       ) : (
         <div className="overflow-x-auto h-[60vh] overflow-y-scroll">
           <table className="min-w-full divide-y-2 divide-gray-200 bg-white  border border-gray-300 text-sm">
-            <thead className="sticky top-0 bg-gray-50 ltr:text-left rtl:text-right">
+            <thead className="sticky top-0 ltr:text-left rtl:text-right bg-blue-300">
               <tr>
                 <th scope="col" className="px-10 py-3">
                   Date
@@ -66,25 +66,6 @@ const WeeklyData = ({ weeklysummaryData, loading, date }) => {
             </thead>
 
             <tbody className="divide-y divide-gray-200 bg-gray-100">
-              {/* {weeklysummaryData.length > 0 &&
-                weeklysummaryData.map((single, index) => (
-                  <tr>
-                    <td className="px-6 text-center  whitespace-nowrap text-sm ">
-                      {single.date
-                        ? new Date(single.date).toLocaleDateString()
-                        : "N/A"}
-                    </td>
-                    <td className="px-6 text-center  whitespace-nowrap text-sm ">
-                      Day
-                    </td>
-                    {weeklysummaryData.length > 0 &&
-                      weeklysummaryData.map((single, index) => (
-                        <td className="px-6 text-center  whitespace-nowrap text-sm ">
-                          Day
-                        </td>
-                      ))}
-                  </tr>
-                ))} */}
               <tr className="bg-gray-50 font-bold ">
                 <td className="px-6 py-3 text-center  whitespace-nowrap text-sm "></td>
                 <td className="px-6 py-3 text-center  whitespace-nowrap text-sm "></td>
@@ -140,63 +121,6 @@ const WeeklyData = ({ weeklysummaryData, loading, date }) => {
                   </tr>
                 </>
               ))}
-              {/* {weeklysummaryData[0].dateList.map((sdate) => (
-                <tr key={sdate.date}>
-                  <td className="px-2 py-3 text-center  whitespace-nowrap text-sm ">
-                    {new Date(sdate.date).toLocaleDateString("en-GB")}
-                  </td>
-                  <td className="px-2 text-center  whitespace-nowrap text-sm ">
-                    {new Date(sdate.date).toLocaleDateString("en-GB", {
-                      weekday: "long",
-                    })}
-                  </td>
-                  <td className="px-2 text-center whitespace-nowrap text-sm border-l-2">
-                    {sdate.checkin
-                      ? new Date(sdate.checkin).toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })
-                      : "0"}
-                  </td>
-                  <td className="px-2 text-center whitespace-nowrap text-sm border-l-2">
-                    {sdate.checkout
-                      ? new Date(sdate.checkout).toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })
-                      : "0"}
-                  </td>
-                </tr>
-              ))} */}
-
-              {/* {weeklysummaryData[1].dateList.map((sdate) => (
-                <tr key={sdate.date}>
-                  <td className="px-2 py-3 text-center  whitespace-nowrap text-sm ">
-                    {new Date(sdate.date).toLocaleDateString("en-GB")}
-                  </td>
-                  <td className="px-2 text-center  whitespace-nowrap text-sm ">
-                    {new Date(sdate.date).toLocaleDateString("en-GB", {
-                      weekday: "long",
-                    })}
-                  </td>
-                  <td className="px-2 text-center whitespace-nowrap text-sm border-l-2">
-                    {sdate.checkin
-                      ? new Date(sdate.checkin).toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })
-                      : "0"}
-                  </td>
-                  <td className="px-2 text-center whitespace-nowrap text-sm border-l-2">
-                    {sdate.checkout
-                      ? new Date(sdate.checkout).toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })
-                      : "0"}
-                  </td>
-                </tr>
-              ))} */}
             </tbody>
           </table>
         </div>

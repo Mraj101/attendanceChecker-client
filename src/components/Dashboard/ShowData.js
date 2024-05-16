@@ -36,10 +36,12 @@ const ShowData = () => {
 
   const handleShowResults = async () => {
     try {
+      console.log("hitting");
       setWeeklySummaryData(null);
       setLoading(true);
       setDisabled(true);
       const postData = { date: selectDate };
+      console.log("before posting data");
       const response = await axios.post(
         process.env.REACT_APP_GetdailySummary,
         postData
@@ -63,14 +65,9 @@ const ShowData = () => {
   };
 
   function getSequentialDateStrings(startDate, endDate) {
-    // console.log("inside function sequential date list");
-    // console.log(startDate, "start date");
-    // console.log(endDate, "end date");
-
     let dates = [];
     let currentDate = new Date(startDate);
     let currentEndDate = new Date(endDate);
-    // console.log(currentDate.getTime(), "current date");
 
     while (currentDate <= currentEndDate) {
       dates.push(currentDate.toISOString());
@@ -122,83 +119,6 @@ const ShowData = () => {
   };
 
   return (
-    // <>
-    //   <div className="w-full">
-    //     <div className=" w-full m-10">
-    //       <div className="relative flex flex-col md:flex-row justify-center items-center  w-[80%] broder gap-8">
-    //       <div className="flex gap-4">
-    //     <span className="mt-3 font-bold">start Date:</span>
-    //       <div className="datepicker">
-    //         <input
-    //               type="date"
-    //               id="datepicker-input"
-    //               value={selectDate}
-    //               onChange={handleStartDateChange}
-    //         />
-    //         <div className="calendar-container">
-    //         <div className="calendar"></div>
-    //         </div>
-    //       </div>
-    //         </div>
-    //         <button
-    //           className={`ml-[180px] md:ml-2 w-28 p-2 border-2 border-gray-300 rounded-lg bg-blue-300 shadow-md ${
-    //             isButtonDisabled
-    //               ? "cursor-not-allowed opacity-50 bg-gray-300"
-    //               : "cursor-pointer"
-    //           }`}
-    //           onClick={handleShowResults}
-    //           disabled={isButtonDisabled}
-    //         >
-    //           Show results
-    //         </button>
-    //       </div>
-
-    //     </div>
-
-    //     <div className="flex items-center justify-center from-gray-100 bg-gradient-to-br w-full my-10  ">
-    //       <div className="flex items-center justify-center w-full ">
-    //         <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-[75%] ">
-    //           <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
-    //             <table className="w-full text-sm text-left text-gray-800 dark:text-gray-400 border border-gray-200 rounded-lg">
-    //               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-    //                 <tr>
-    //                   <th scope="col" className="py-3 px-4">
-    //                     Name
-    //                   </th>
-    //                   <th scope="col" className="py-3 px-4">
-    //                     Date
-    //                   </th>
-    //                   <th scope="col" className="py-3 px-4">
-    //                     Total time
-    //                   </th>
-    //                   <th scope="col" className="py-3 px-4">
-    //                     Arrival
-    //                   </th>
-    //                   <th scope="col" className="py-3 px-4">
-    //                     departure
-    //                   </th>
-    //                 </tr>
-    //               </thead>
-    //               <tbody>
-    //                 {
-    //                   summaryData?.map(singleData=>(
-    //                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-    //                   <td className="py-4 px-4">{singleData.userName}</td>
-    //                   <td className="py-4 px-4">{singleData.timestamp?.split('T')[0]}</td>
-    //                   <td className="py-4 px-4">{singleData.spentTime}</td>
-    //                   <td className="py-4 px-4">{singleData.checkin}</td>
-    //                   <td className="py-4 px-4">{singleData.checkout}</td>
-    //                 </tr>))
-    //                 }
-    //               </tbody>
-    //             </table>
-
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </>
     <>
       <div className="w-full">
         <BoxData data={summaryData} />
@@ -325,7 +245,7 @@ const ShowData = () => {
         {summaryData && (
           <div className="flex items-center justify-center from-gray-100 bg-gradient-to-br w-full my-2 ">
             <div className="flex items-center justify-center w-full ">
-              <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-[90%] ">
+              <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-[99%] ">
                 {loading ? ( // Show loader if loading state is true
                   <div role="status">
                     <svg
@@ -349,26 +269,43 @@ const ShowData = () => {
                 ) : (
                   <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
                     <table>
-                      <thead>
-                        <tr class="table-headers">
-                          <th>NAME</th>
-                          <th>DATE</th>
-                          <th>CHECKIN</th>
-                          <th>CHECKOUT</th>
-                          <th>WorkHour</th>
-                          <th>STATUS</th>
+                      <thead className=" bg-blue-300">
+                        <tr class="table-headers ">
+                          <th scope="col" className="px-9 py-3">
+                            NAME
+                          </th>
+                          <th scope="col" className="px-9 py-3">
+                            DATE
+                          </th>
+                          <th scope="col" className="px-9 py-3">
+                            CHECKIN
+                          </th>
+                          <th scope="col" className="px-9 py-3">
+                            CHECKOUT
+                          </th>
+                          <th scope="col" className="px-9 py-3">
+                            WorkHour
+                          </th>
+                          <th scope="col" className="px-9 py-3">
+                            STATUS
+                          </th>
+                          <th scope="col" className="px-9 py-3">
+                            Details
+                          </th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody className="divide-y divide-gray-200 bg-gray-100">
                         {summaryData?.map((item, index) => (
-                          <tr className=" font-extralight" key={index}>
-                            <td>{item.userName}</td>
-                            <td>
+                          <tr className="bg-gray-50 font-bold " key={index}>
+                            <td className="px-6 py-3 text-center  whitespace-nowrap text-sm ">
+                              {item.userName}
+                            </td>
+                            <td className="px-6 py-3 text-center  whitespace-nowrap text-sm ">
                               {item.date
                                 ? new Date(item.date).toLocaleDateString()
                                 : "N/A"}
                             </td>
-                            <td>
+                            <td className="px-6 py-3 text-center  whitespace-nowrap text-sm">
                               {item.checkin
                                 ? new Date(item.checkin).toLocaleTimeString(
                                     [],
@@ -376,7 +313,7 @@ const ShowData = () => {
                                   )
                                 : ""}
                             </td>
-                            <td>
+                            <td className="px-6 py-3 text-center  whitespace-nowrap text-sm ">
                               {item.checkout
                                 ? new Date(item.checkout).toLocaleTimeString(
                                     [],
@@ -384,7 +321,7 @@ const ShowData = () => {
                                   )
                                 : ""}
                             </td>
-                            <td>
+                            <td className="px-6 py-3 text-center  whitespace-nowrap text-sm ">
                               {item.spentTime
                                 ? `${Math.floor(item.spentTime / 60)}h ${
                                     item.spentTime % 60
@@ -394,9 +331,25 @@ const ShowData = () => {
                             <td
                               className={`${
                                 item.absent ? "text-red-500" : "text-green-500"
-                              } font-bold`}
+                              } font-bold px-6 py-3 text-center  whitespace-nowrap text-sm "`}
                             >
                               {item.absent ? "Absent" : "Present"}
+                            </td>
+                            <td className="px-6 py-3 text-center  whitespace-nowrap text-sm ">
+                              <div class="relative grid select-none items-center whitespace-nowrap rounded-full bg-blue-200 px-3 py-1.5 font-sans text-xs font-bold uppercase text-white">
+                                <div class="absolute top-2/4 left-1.5 h-5 w-5 -translate-y-2/4">
+                                  <img
+                                    alt="Tania Andrew"
+                                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+                                    class="relative inline-block h-full w-full -translate-x-0.5 !rounded-full  object-cover object-center"
+                                  />
+                                </div>
+                                <span class="ml-[18px]">
+                                  <p class="block font-sans text-sm antialiased font-medium leading-none text-black capitalize hover:cursor-pointer">
+                                    {item.userName}
+                                  </p>
+                                </span>
+                              </div>
                             </td>
                           </tr>
                         ))}

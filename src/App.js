@@ -9,6 +9,7 @@ import "./App.css";
 import { Dashboad } from "./page/Dashboad";
 import { Layout } from "./layout/Layout";
 import ShowData from "./components/Dashboard/ShowData";
+import Employee from "./page/Employee";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +21,8 @@ const router = createBrowserRouter([
         element: <Dashboad />,
       },
       {
-        path: "/view",
-        element: null,
+        path: "/employee",
+        element: <Employee />,
       },
       {
         path: "/settings",
