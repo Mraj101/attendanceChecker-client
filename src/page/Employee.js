@@ -140,7 +140,7 @@ const Employee = () => {
   //     setSummaryData(null);
   //   };
 
-  //   console.log("consoling emp list userid", weeklysummaryData.dateList);
+  console.log("consoling emp list userid", weeklysummaryData?.dateList);
   return (
     <>
       <div class="flex flex-col h-screen p-3">
@@ -209,111 +209,63 @@ const Employee = () => {
             </div>
           </div>
         </div>
+        {weeklysummaryData && userName && (
+          <p className="pt-10 text-center font-bold text-4xl">
+            Attendance sumary of {userName}
+          </p>
+        )}
+
         {weeklysummaryData && (
-          <div className="overflow-x-auto mt-5 h-[60vh] overflow-y-scroll">
-            <table className="min-w-full divide-y-2 divide-gray-200 bg-white  border border-gray-300 text-sm">
+          <div className="overflow-x-auto mt-5 min-h-[300px] overflow-y-scroll">
+            <table className="w-[80%] divide-y-2 divide-gray-200 bg-white  border border-gray-300 text-sm">
               <thead className="sticky top-0 ltr:text-left rtl:text-right bg-blue-300">
                 <tr>
                   <th scope="col" className="px-10 py-3">
-                    Name
+                    Date
                   </th>
-                  {weeklysummaryData &&
-                    weeklysummaryData.dateList.map((single, index) => (
-                      <th
-                        rowspan="2"
-                        scope="col"
-                        colspan="2"
-                        className="px-10 py-3 whitespace-nowrap"
-                      >
-                        Day {index + 1}
-                      </th>
-                    ))}
+                  <th scope="col" className="px-10 py-3">
+                    CHECK-IN
+                  </th>
+                  <th scope="col" className="px-10 py-3">
+                    CHECK-OUT
+                  </th>
+                  <th scope="col" className="px-10 py-3">
+                    WORK-HOURS
+                  </th>
                 </tr>
               </thead>
 
               <tbody className="divide-y divide-gray-200 bg-gray-100">
-                <tr className="bg-gray-50 font-bold ">
-                  <td className="px-6 py-3 text-center  whitespace-nowrap text-sm "></td>
-                  {/* <td className="px-6 py-3 text-center  whitespace-nowrap text-sm "></td> */}
-
-                  {weeklysummaryData &&
-                    weeklysummaryData.dateList.map((single, index) => (
-                      <>
-                        {" "}
-                        <td className="px-3 py-3 text-center border-l-2 border-gray-300  whitespace-nowrap text-sm ">
-                          Check in
-                        </td>
-                        <td className="px-3 py-3 text-center  whitespace-nowrap text-sm ">
-                          Check out
-                        </td>
-                      </>
-                    ))}
-                </tr>
-                <tr>
-                  <td className="px-3 py-3 text-center  whitespace-nowrap text-sm ">
-                    {weeklysummaryData.userName}
-                  </td>
-                  {weeklysummaryData.dateList.map((single, index) => (
-                    <>
-                      {" "}
-                      <td className="px-3 py-3 text-center border-l-2 border-gray-300  whitespace-nowrap text-sm ">
-                        {single.checkin
-                          ? new Date(single.checkin).toLocaleTimeString([], {
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            })
-                          : ""}
-                      </td>
-                      <td className="px-3 py-3 text-center  whitespace-nowrap text-sm ">
-                        {single.checkout
-                          ? new Date(single.checkout).toLocaleTimeString([], {
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            })
-                          : ""}
-                      </td>
-                    </>
-                  ))}
-                </tr>
-                {/* {newDateList.map((nDate, i) => (
-                  <>
-                    {console.log(nDate, i, "index and ndate")}
-                    <tr key={newDateList[i]}>
-                      <td className="px-2 py-3 text-center  whitespace-nowrap text-sm ">
-                        {new Date(newDateList[i]).toLocaleDateString("en-GB")}
-                      </td>
-                      <td className="px-2 text-center  whitespace-nowrap text-sm ">
-                        {new Date(newDateList[i]).toLocaleDateString("en-GB", {
-                          weekday: "long",
-                        })}
-                      </td>
-                      {weeklysummaryData.map((singleData) => (
-                        <>
-                          <td className="px-2 text-center whitespace-nowrap text-sm border-l-2">
-                            {singleData.dateList[i].checkin
-                              ? new Date(
-                                  singleData.dateList[i].checkin
-                                ).toLocaleTimeString([], {
-                                  hour: "2-digit",
-                                  minute: "2-digit",
-                                })
-                              : "0"}
-                          </td>
-                          <td className="px-2 text-center whitespace-nowrap text-sm border-l-2">
-                            {singleData.dateList[i].checkout
-                              ? new Date(
-                                  singleData.dateList[i].checkout
-                                ).toLocaleTimeString([], {
-                                  hour: "2-digit",
-                                  minute: "2-digit",
-                                })
-                              : "0"}
-                          </td>
-                        </>
-                      ))}
-                    </tr>
-                  </>
-                ))} */}
+                {weeklysummaryData.dateList.map((single, index) => (
+                  <tr key={index}>
+                    <td className="px-3 py-3 text-center whitespace-nowrap text-sm">
+                      {new Date(single.date).toLocaleDateString("en-GB")}
+                    </td>
+                    <td className="px-3 py-3 text-center  whitespace-nowrap text-sm ">
+                      {single.checkin
+                        ? new Date(single.checkin).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })
+                        : ""}
+                    </td>
+                    <td className="px-3 py-3 text-center  whitespace-nowrap text-sm ">
+                      {single.checkout
+                        ? new Date(single.checkout).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })
+                        : ""}
+                    </td>
+                    <td className="px-3 py-3 text-center whitespace-nowrap text-sm">
+                      {!single.checkin || !single.checkout
+                        ? "0 h"
+                        : `${Math.floor(single.spentTime / 60)}h ${
+                            single.spentTime % 60
+                          }m`}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
