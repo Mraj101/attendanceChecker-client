@@ -43,7 +43,7 @@ const BoxData = ({ data }) => {
             </svg>
             <p>Employees</p>
           </div>
-          <p className="text-center text-4xl font-bold">13</p>
+          <p className="text-center text-4xl font-bold">N/A</p>
         </div>
 
         <div className="h-36 w-48 border border-gray-300 rounded-lg shadow-md">
@@ -64,7 +64,7 @@ const BoxData = ({ data }) => {
             </svg>
             <p className="font-extralight text-xl">Present</p>
           </div>
-          <div className="text-center text-4xl font-bold">{}</div>
+          <div className="text-center text-4xl font-bold">N/A</div>
         </div>
 
         <div className="h-36 w-48 border border-gray-300 rounded-lg shadow-md">
@@ -85,7 +85,7 @@ const BoxData = ({ data }) => {
             </svg>
             <p className="font-extralight text-xl">Absent</p>
           </div>
-          <div className="text-center text-4xl font-bold">sf</div>
+          <div className="text-center text-4xl font-bold">N/A</div>
         </div>
       </div>
     </>
