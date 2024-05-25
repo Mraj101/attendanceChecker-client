@@ -41,7 +41,7 @@ const WeeklyData = ({ weeklysummaryData, loading, date }) => {
           <span className="sr-only">Loading...</span>
         </div>
       ) : (
-        <div className="overflow-x-auto h-[60vh] overflow-y-scroll">
+        <div className="overflow-x-auto h-[700px] overflow-y-scroll">
           <table className="min-w-full divide-y-2 divide-gray-200 bg-white  border border-gray-300 text-sm">
             <thead className="sticky top-0 ltr:text-left rtl:text-right bg-blue-300">
               <tr>
